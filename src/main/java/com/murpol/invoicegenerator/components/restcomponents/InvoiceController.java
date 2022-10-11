@@ -1,5 +1,6 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.restcomponents;
 
+import com.murpol.invoicegenerator.components.invoice.Invoice;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

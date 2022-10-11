@@ -1,4 +1,4 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.infoclasses;
 
 public class PersonalInfo {
 
@@ -23,7 +23,7 @@ public class PersonalInfo {
 
     @Override
     public String toString() {
-        return "PersonalInfo{" +
+        return "PersonalData{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';

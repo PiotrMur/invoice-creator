@@ -1,61 +1,20 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.invoice;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-@Service
-class InvoiceService {
+public class PdfGenerator {
 
-    private InvoiceJPARepository invoiceJPARepository;
-
-    public InvoiceService(InvoiceJPARepository invoiceJPARepository) {
-        this.invoiceJPARepository = invoiceJPARepository;
-    }
-
-    private static final Logger LOG = LoggerFactory.getLogger(InvoiceService.class);
-
-    public List<Invoice> showAllInvoices(){
-        return invoiceJPARepository.fetchAll();
-    }
-
-    public Invoice getInvoiceById(String gettingInvoiceId){
-        return invoiceJPARepository.fetchById(gettingInvoiceId);
-    }
-
-    public void deleteInvoice(String invoiceId){
-        invoiceJPARepository.delete(invoiceId);
-    }
-
-    public void createPDF(Invoice invoice) {
-
-        List<String> invoiceData = new ArrayList<>();
-        invoiceData.add(invoice.getPersonalData().getFirstName());
-        invoiceData.add(invoice.getPersonalData().getLastName());
-        invoiceData.add(invoice.getFinancialData().getAmount());
-        invoiceData.add(invoice.getFinancialData().getCurrency());
-        invoiceData.add(invoice.getFinancialData().getCompany());
-
-        LOG.info("Personal info {}", invoice.getPersonalData());
-        LOG.info("Financial data {}", invoice.getFinancialData());
-
-        generatePDF(invoiceData);
-        invoiceJPARepository.save(invoice);
-    }
-
-    private void generatePDF(List<String> invoiceData) {
+    public static void generatePDF(List<String> invoiceData) {
         try (PDDocument doc = new PDDocument()) {
 
             PDDocumentInformation information = new PDDocumentInformation();
@@ -109,5 +68,4 @@ class InvoiceService {
             e.printStackTrace();
         }
     }
-
 }

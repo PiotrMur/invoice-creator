@@ -1,4 +1,4 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.invoice;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

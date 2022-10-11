@@ -1,6 +1,6 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.infoclasses;
 
-class FinancialData {
+public class FinancialInfo {
 
     private String amount;
     private String currency;

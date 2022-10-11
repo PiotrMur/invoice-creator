@@ -1,6 +1,6 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.infoclasses;
 
-enum ProcessingLevel {
+public enum ProcessingLevel {
 
     SENT("Sent"),
     SAVED("Saved");

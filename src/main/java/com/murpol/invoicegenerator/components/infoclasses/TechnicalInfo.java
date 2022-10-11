@@ -1,6 +1,6 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.infoclasses;
 
-class TechnicalData {
+public class TechnicalInfo {
 
     private ProcessingLevel processingLevel;
 
