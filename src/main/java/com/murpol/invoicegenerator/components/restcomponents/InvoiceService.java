@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-class InvoiceService {
+public class InvoiceService {
 
-    private MongoInvoiceRepository mongoInvoiceRepository;
+    private final MongoInvoiceRepository mongoInvoiceRepository;
 
     public InvoiceService(MongoInvoiceRepository mongoInvoiceRepository) {
         this.mongoInvoiceRepository = mongoInvoiceRepository;
@@ -45,14 +45,14 @@ class InvoiceService {
     public void createPDF(Invoice invoice) {
 
         List<String> invoiceData = new ArrayList<>();
-        invoiceData.add(invoice.getPersonalData().getFirstName());
-        invoiceData.add(invoice.getPersonalData().getLastName());
-        invoiceData.add(invoice.getFinancialData().getAmount());
-        invoiceData.add(invoice.getFinancialData().getCurrency());
-        invoiceData.add(invoice.getFinancialData().getCompany());
+        invoiceData.add(invoice.getPersonalInfo().getFirstName());
+        invoiceData.add(invoice.getPersonalInfo().getLastName());
+        invoiceData.add(invoice.getFinancialInfo().getAmount());
+        invoiceData.add(invoice.getFinancialInfo().getCurrency());
+        invoiceData.add(invoice.getFinancialInfo().getCompany());
 
-        LOG.info("Personal info {}", invoice.getPersonalData());
-        LOG.info("Financial data {}", invoice.getFinancialData());
+        LOG.info("Personal info {}", invoice.getPersonalInfo());
+        LOG.info("Financial data {}", invoice.getFinancialInfo());
 
         mongoInvoiceRepository.save(invoice);
         PdfGenerator.generatePDF(invoiceData);
