@@ -1,6 +1,8 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.fieldsAcumulators;
 
-class TechnicalData {
+import com.murpol.invoicegenerator.components.fieldsAcumulators.ProcessingLevel;
+
+public class TechnicalData {
 
     private ProcessingLevel processingLevel;
 

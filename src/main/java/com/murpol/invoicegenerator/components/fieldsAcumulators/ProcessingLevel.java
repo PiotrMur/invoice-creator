@@ -1,9 +1,11 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.fieldsAcumulators;
 
 enum ProcessingLevel {
 
     SENT("Sent"),
-    SAVED("Saved");
+    SAVED("Saved"),
+    PAID("Paid"),
+    PARTIALLYPAID("PartiallyPaid");
 
 
     private final String status;

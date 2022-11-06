@@ -1,15 +1,15 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.entity;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-class IdGenerator {
+public class IdGenerator {
 
     private IdGenerator(){
 
     }
 
-    static String generateInvoiceNumber() {
+    public static String generateInvoiceNumber() {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern("uuMMddHHmmss"));
     }
 }

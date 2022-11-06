@@ -1,14 +1,13 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.hexagonalelements.repositories;
 
-import org.springframework.stereotype.Component;
+import com.murpol.invoicegenerator.components.entity.Invoice;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
 public class InvoiceJPARepository implements InvoiceRepository {
 
-    private MongoInvoiceRepository mongoInvoiceRepository;
+    private final MongoInvoiceRepository mongoInvoiceRepository;
 
     public InvoiceJPARepository(MongoInvoiceRepository mongoInvoiceRepository) {
         this.mongoInvoiceRepository = mongoInvoiceRepository;
@@ -40,5 +39,10 @@ public class InvoiceJPARepository implements InvoiceRepository {
     @Override
     public void save(Invoice invoice) {
         mongoInvoiceRepository.save(invoice);
+    }
+
+
+    public void print() {
+        System.out.println("hello");
     }
 }

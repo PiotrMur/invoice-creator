@@ -1,15 +1,18 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.hexagonalelements;
+
+import com.murpol.invoicegenerator.components.fieldsAcumulators.FinancialData;
+import com.murpol.invoicegenerator.components.fieldsAcumulators.PersonalData;
 
 public class GenerateInvoiceDTO {
 
-    private PersonalInfo personalInfo;
+    private PersonalData personalInfo;
     private FinancialData financialData;
 
-    public PersonalInfo getPersonalInfo() {
+    public PersonalData getPersonalData() {
         return personalInfo;
     }
 
-    public void setPersonalInfo(PersonalInfo personalInfo) {
+    public void setPersonalInfo(PersonalData personalInfo) {
         this.personalInfo = personalInfo;
     }
 

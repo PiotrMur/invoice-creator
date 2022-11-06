@@ -1,8 +1,12 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.entity;
 
+import com.murpol.invoicegenerator.components.entity.IdGenerator;
+import com.murpol.invoicegenerator.components.fieldsAcumulators.FinancialData;
+import com.murpol.invoicegenerator.components.fieldsAcumulators.PersonalData;
+import com.murpol.invoicegenerator.components.fieldsAcumulators.TechnicalData;
 import org.springframework.data.annotation.Id;
 
-class Invoice {
+public class Invoice {
 
     @Id
     private String id = IdGenerator.generateInvoiceNumber();

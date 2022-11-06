@@ -1,4 +1,6 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.hexagonalelements.repositories;
+
+import com.murpol.invoicegenerator.components.entity.Invoice;
 
 import java.util.List;
 

@@ -1,5 +1,8 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.hexagonalelements;
 
+import com.murpol.invoicegenerator.components.entity.IdGenerator;
+import com.murpol.invoicegenerator.components.entity.Invoice;
+import com.murpol.invoicegenerator.components.hexagonalelements.repositories.InvoiceRepository;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -7,7 +10,6 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -16,27 +18,26 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-@Service
-class InvoiceService {
+public class InvoiceService {
 
-    private InvoiceJPARepository invoiceJPARepository;
+    private InvoiceRepository invoiceRepository;
 
-    public InvoiceService(InvoiceJPARepository invoiceJPARepository) {
-        this.invoiceJPARepository = invoiceJPARepository;
+    public InvoiceService(InvoiceRepository invoiceRepository) {
+        this.invoiceRepository = invoiceRepository;
     }
 
     private static final Logger LOG = LoggerFactory.getLogger(InvoiceService.class);
 
     public List<Invoice> showAllInvoices(){
-        return invoiceJPARepository.fetchAll();
+        return invoiceRepository.fetchAll();
     }
 
     public Invoice getInvoiceById(String gettingInvoiceId){
-        return invoiceJPARepository.fetchById(gettingInvoiceId);
+        return invoiceRepository.fetchById(gettingInvoiceId);
     }
 
     public void deleteInvoice(String invoiceId){
-        invoiceJPARepository.delete(invoiceId);
+        invoiceRepository.delete(invoiceId);
     }
 
     public void createPDF(Invoice invoice) {
@@ -52,7 +53,7 @@ class InvoiceService {
         LOG.info("Financial data {}", invoice.getFinancialData());
 
         generatePDF(invoiceData);
-        invoiceJPARepository.save(invoice);
+        invoiceRepository.save(invoice);
     }
 
     private void generatePDF(List<String> invoiceData) {

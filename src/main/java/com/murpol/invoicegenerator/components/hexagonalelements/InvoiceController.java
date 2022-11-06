@@ -1,5 +1,6 @@
-package com.murpol.invoicegenerator.components;
+package com.murpol.invoicegenerator.components.hexagonalelements;
 
+import com.murpol.invoicegenerator.components.entity.Invoice;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/invoices")
-class InvoiceController {
+public class InvoiceController {
 
     private final InvoiceService invoiceService;
 
